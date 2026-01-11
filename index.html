@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <!-- Removed leading slash for better compatibility -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/Teddy-Bear-Calculator/manifest.json">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2649/2649231.png">
     <title>ProTrack Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +36,7 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           // Use relative path for sw.js
-          navigator.serviceWorker.register('sw.js')
+          navigator.serviceWorker.register('/Teddy-Bear-Calculator/sw.js')
             .then(reg => console.log('ProTrack SW Registered'))
             .catch(err => console.log('SW registration failed:', err));
         });
