@@ -1,8 +1,10 @@
+const CACHE_NAME = 'protrack-v6';
+const BASE_PATH = '/Teddy-Bear-Calculator/';
 
-const CACHE_NAME = 'protrack-v5';
 const ASSETS_TO_CACHE = [
-  'index.html',
-  'manifest.json'
+  BASE_PATH,
+  BASE_PATH + 'index.html',
+  BASE_PATH + 'manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
@@ -18,7 +20,8 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter((name) => name !== CACHE_NAME)
+        cacheNames
+          .filter((name) => name !== CACHE_NAME)
           .map((name) => caches.delete(name))
       );
     })
@@ -27,16 +30,20 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Check if we should ignore this request (e.g. cross-origin or chrome extensions)
   if (!event.request.url.startsWith(self.location.origin)) return;
 
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request).catch(() => {
-        if (event.request.mode === 'navigate') {
-          return caches.match('index.html');
-        }
-      });
+    caches.match(event.request).then((cached) => {
+      return (
+        cached ||
+        fetch(event.request).then((response) => {
+          return response;
+        }).catch(() => {
+          if (event.request.mode === 'navigate') {
+            return caches.match(BASE_PATH);
+          }
+        })
+      );
     })
   );
 });
