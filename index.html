@@ -1,51 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0f172a">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Removed leading slash for better compatibility -->
-    <link rel="manifest" href="/Teddy-Bear-Calculator/manifest.json">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2649/2649231.png">
-    <title>ProTrack Management</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        input[type="number"] { font-size: 16px; }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "recharts": "https://esm.sh/recharts@^3.6.0"
-  }
-}
-</script>
-</head>
-<body class="bg-slate-50 text-slate-900">
-    <div id="root"></div>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          // Use relative path for sw.js
-          navigator.serviceWorker.register('/Teddy-Bear-Calculator/sw.js')
-            .then(reg => console.log('ProTrack SW Registered'))
-            .catch(err => console.log('SW registration failed:', err));
-        });
-      }
-    </script>
-    <script>
-  document.getElementById("root").innerHTML =
-    "<h1 style='padding:20px;font-size:24px'>✅ GitHub Pages works</h1>";
-</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>ProTrack Management</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/Teddy-Bear-Calculator/manifest.json">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2649/2649231.png">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-xl rounded-xl p-6 w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-4 text-center">ProTrack</h1>
+
+      <label class="block mb-2 font-medium">Production Cost</label>
+      <input id="cost" type="number" class="w-full p-2 border rounded mb-4" placeholder="Enter cost">
+
+      <label class="block mb-2 font-medium">Units Produced</label>
+      <input id="units" type="number" class="w-full p-2 border rounded mb-4" placeholder="Enter units">
+
+      <button onclick="calculate()"
+        class="w-full bg-slate-900 text-white py-2 rounded hover:bg-slate-800">
+        Calculate Cost / Unit
+      </button>
+
+      <p id="result" class="mt-4 text-center text-lg font-semibold"></p>
+    </div>
+  </div>
+
+  <!-- App Logic -->
+  <script>
+    function calculate() {
+      const cost = Number(document.getElementById('cost').value);
+      const units = Number(document.getElementById('units').value);
+      const result = document.getElementById('result');
+
+      if (!cost || !units || units <= 0) {
+        result.textContent = 'Please enter valid values';
+        return;
+      }
+
+      const perUnit = (cost / units).toFixed(2);
+      result.textContent = `Cost per unit: $${perUnit}`;
+    }
+
+    // Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/Teddy-Bear-Calculator/sw.js');
+    }
+  </script>
 </body>
 </html>
