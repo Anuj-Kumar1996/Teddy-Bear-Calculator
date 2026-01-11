@@ -1,0 +1,35 @@
+
+{
+  "short_name": "ProTrack",
+  "name": "ProTrack: Production Management Enterprise",
+  "description": "Enterprise-grade production costing and optimization tool for manufacturing lines.",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2649/2649231.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2649/2649231.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0f172a",
+  "background_color": "#f8fafc",
+  "categories": ["business", "productivity"],
+  "screenshots": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2649/2649231.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Production Dashboard"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "ProTrack: Production Management Calculator",
+  "description": "A comprehensive production management tool for sewing and filling lines, featuring real-time costing, efficiency tracking, and Gemini-powered optimization insights.",
+  "requestFramePermissions": [],
+  "manifest": "manifest.json"
+}
