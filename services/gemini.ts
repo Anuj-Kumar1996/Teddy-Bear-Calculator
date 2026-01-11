@@ -7,7 +7,8 @@ export const getProductionInsights = async (
   result: CalculationResult,
   lang: Language
 ): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+  // Always initialize with process.env.API_KEY directly using a named parameter.
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const prompt = `
     Act as a senior production and financial consultant. I am managing a ${stats.type} production line.
@@ -34,6 +35,7 @@ export const getProductionInsights = async (
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });
+    // Use .text property directly (do not call as a function).
     return response.text || "Unable to generate insights at this time.";
   } catch (error) {
     console.error("Gemini Error:", error);

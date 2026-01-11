@@ -1,8 +1,17 @@
 
 {
-  "short_name": "ProTrack",
+  "id": "com.protrack.production.manager",
   "name": "ProTrack Production Management",
-  "description": "Production costing and AI optimization tool.",
+  "short_name": "ProTrack",
+  "description": "Production costing and AI optimization tool for manufacturing lines.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "theme_color": "#0f172a",
+  "background_color": "#f8fafc",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "./index.html",
+  "scope": "./",
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/512/2649/2649231.png",
@@ -15,12 +24,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2649/2649231.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ],
-  "start_url": "./index.html",
-  "scope": "/",
-  "display": "standalone",
-  "theme_color": "#0f172a",
-  "background_color": "#f8fafc",
-  "orientation": "portrait"
+  ]
 }
